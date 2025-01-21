@@ -101,6 +101,7 @@ public class OperatorEx {
 	 * 13세 이하면 "어린이"
 	 * 14세 이상 19세 이하 "청소년"
 	 * 20세 이상 "성인"
+	 * </pre>
 	 */
 	public void method3() {
 		
