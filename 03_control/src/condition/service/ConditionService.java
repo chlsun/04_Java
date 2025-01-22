@@ -104,6 +104,7 @@ public class ConditionService {
 		System.out.println("1. method1()");
 		System.out.println("2. method2()");
 		System.out.println("3. method3()");
+		System.out.println("4. 성적판별기");
 		System.out.print("메뉴 번호 입력 >> ");
 		int input = sc.nextInt();
 		
@@ -112,6 +113,7 @@ public class ConditionService {
 		case 1 : method1(); break;
 		case 2 : method2(); break;
 		case 3 : method3(); break;
+		case 4 : testMethod(); break;		
 		default : System.out.println("없는 메뉴 번호 입니다");
 		}
 	}
@@ -154,7 +156,7 @@ public class ConditionService {
 	public void testMethod() {
 		
 		System.out.print("이름 : ");
-		String name = sc.nextLine();
+		String name = sc.next();		// 입력 버퍼에서 다음 문자열(단어) 얻어오기
 		
 		System.out.print("중간고사 점수(40%) : ");
 		int grade1 = sc.nextInt();
@@ -184,25 +186,51 @@ public class ConditionService {
 		
 		String grade;
 		
-		if(totalGrade >= 95) {
-			grade = "A+";
-		}else if(totalGrade >= 90) {
-			grade = "A";
-		}else if(totalGrade >= 85) {
-			grade = "B+";
-		}else if(totalGrade >= 80) {
-			grade = "B";
-		}else if(totalGrade >= 75) {
-			grade = "C+";
-		}else if(totalGrade >= 70) {
-			grade = "C";
-		}else if(totalGrade >= 65) {
-			grade = "D+";
-		}else if(totalGrade >= 60) {
-			grade = "D";
-		}else {
-			grade = "F";
+		// Java 지역변수는 초기화 안되면 사용 불가!
+		// System.out.println(grade);	// 오류 발생
+		
+		// (int)totalGrade/10
+		// - totalGrade를 먼저 int로 강제 형변환 후 10으로 나눔
+		// -> 십의 자리 숫자만 남기는 식
+		
+		switch((int)totalGrade/10) {	// switch문 () 내에는 정수/문자열 작성 가능
+		
+		//하나의 case에 여러 경우를 (,) 기호를 이용해서 작성 가능
+		// (Java만 가능!!! JS 안됨)
+			case 10, 9 : grade = "A"; break;
+			case 8 : grade = "B"; break;
+			case 7 : grade = "C"; break;
+			case 6 : grade = "D"; break;
+			default : grade = "F";
+
 		}
+		
+		/// [일의 자리 생각]
+		// 합계가 60점대 이상 이면서
+		// 나머지 5 이상인 경우(65~, 75~, 85~, 95~)
+		if(totalGrade == 100 || (totalGrade >= 60.0 && totalGrade % 10 >= 5)) {
+			grade += "+";
+		}
+		
+//		if(totalGrade >= 95) {
+//			grade = "A+";
+//		}else if(totalGrade >= 90) {
+//			grade = "A";
+//		}else if(totalGrade >= 85) {
+//			grade = "B+";
+//		}else if(totalGrade >= 80) {
+//			grade = "B";
+//		}else if(totalGrade >= 75) {
+//			grade = "C+";
+//		}else if(totalGrade >= 70) {
+//			grade = "C";
+//		}else if(totalGrade >= 65) {
+//			grade = "D+";
+//		}else if(totalGrade >= 60) {
+//			grade = "D";
+//		}else {
+//			grade = "F";
+//		}
 		
 		System.out.printf("성적 : %s", grade);
 		
