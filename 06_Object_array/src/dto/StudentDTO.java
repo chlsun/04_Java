@@ -92,6 +92,9 @@ public class StudentDTO {
 				+ "HTML : %d / CSS : %d / JS : %d / Java : %d", studentNumber, name, gender, html, css, js, java);
 	}
 	
+	public String grade() {
+		return String.format("합계 : %d\n평균 : %.1f\n", html+css+js+java, (html+css+js+java) / 4.0);
+	}
 	
 	
 	
