@@ -60,6 +60,9 @@ public class Book {
 	}
 
 	
+	
+	
+	
 	/* equals() 오버라이딩
 	 * -> 비교하려는 두 객체의 필드 값이 같은지 비교
 	 * 		(동등 비교)
@@ -88,6 +91,10 @@ public class Book {
 		// 현재 객체와 전달 받은 객체의 bookNumber가 다르면
 		if(this.bookNumber != other.bookNumber) return false;
 		
+		// 위에 조건식 처럼 단순 비교연산자로 불가능 
+		// Why? 문자열(String)은 객체여서 참조주소의 비교가 됨
+		// this.title.equals(other.title) << this.title 은 String이기 때문에
+		// String 클래스안에서 오버라이딩 된 eqauls로 문자열 비교
 		// 현재 객체와 전달 받은 객체의 author이 다를 경우
 		if( !this.title.equals(other.title) ) return false;
 		
@@ -117,6 +124,7 @@ public class Book {
 		
 		return Objects.hash(bookNumber, title, author, price);
 		
+		/* 옛날 방식 */
 //		int result = 1;
 //		final int PRIME = 31;
 //		
@@ -127,5 +135,43 @@ public class Book {
 //		
 //		return result;
 	}
+	
+	
+	/* 자동완성으로 만든 equals & hashCode 오버라이딩 */
+	// art + shift + s -> h
+	
+//	@Override
+//	public String toString() {
+//		return "Book [BookNumber=" + bookNumber + ", title=" + title + ", author=" + author + ", price=" + price + "]";
+//	}
+//
+//	
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Book other = (Book) obj;
+//		return Objects.equals(author, other.author) && bookNumber == other.bookNumber && price == other.price
+//				&& Objects.equals(title, other.title);
+//	}
+//
+//	
+//	// --------------------------------------------------
+//	
+//	/* hashCode() 오버라이딩
+//	 * - 동등한 객체는 같은 식별 번호를 가져야 한다
+//	 * - A.equals(B) -> true 이면
+//	 *   A.hashCode() == B.hashCode() -> true 이다
+//	 */
+//
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(author, bookNumber, price, title);
+//	}
+	
 	
 }
