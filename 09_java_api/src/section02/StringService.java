@@ -11,7 +11,7 @@ public class StringService {
 	
 	/* [String의 불변성(immutable)]
 	 * 
-	 * - String은 문자열을 저장하는 필드가ㅏ
+	 * - String은 문자열을 저장하는 필드가
 	 * 	 final로 선언되어있음 -> 한 번만 값 대입 가능
 	 * 
 	 * - 저장된 문자열 수정이 불가하기 때문에
@@ -132,7 +132,7 @@ public class StringService {
 		sb.append("klmno");
 		sb.append("/");
 		
-		/* to String() : StringBuilder 객체에 저장된 값을 
+		/* toString() : StringBuilder 객체에 저장된 값을 
 		 * 							 String으로 반환 */
 		System.out.println("sb.toString() : " + sb.toString());
 		System.out.println("sb 크기 : " + sb.capacity());
